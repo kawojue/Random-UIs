@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import './styles.css'
@@ -5,13 +6,13 @@ import { useState, useEffect } from 'react'
 import faqs from '@/data/source'
 
 const page = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false)
     const [isActive, setIsActive] = useState<number>(1)
+    const [isOpen, setIsOpen] = useState<boolean>(false)
 
     useEffect(() => {
         setIsActive(1)
         setIsOpen(isActive === 1 && true)
-    }, [isActive, isOpen])
+    }, [])
 
     return (
         <main className="mx-auto mt-14 md:mt-16">
@@ -23,7 +24,7 @@ const page = () => {
                     <section key={faq.id} onClick={() => {
                         setIsActive(faq.id)
                         setIsOpen(true)
-                    }} className={`${active && 'text-clr-2'}`}>
+                    }} className={`${isOpen && isActive === faq.id && 'text-clr-2'}`}>
                         <h3>{faq.quest}</h3>
                         <p>{faq.ans}</p>
                     </section>
