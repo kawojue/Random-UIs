@@ -24,9 +24,13 @@ const page = () => {
                     <section key={faq.id} onClick={() => {
                         setIsActive(faq.id)
                         setIsOpen(true)
-                    }} className={`${isOpen && isActive === faq.id && 'text-clr-2'}`}>
-                        <h3>{faq.quest}</h3>
-                        <p>{faq.ans}</p>
+                    }}>
+                        <h3 className={`${active && 'text-clr-2'}`}>
+                            {faq.quest}
+                        </h3>
+                        <p className={`${!active && 'hidden'}`}>
+                            {faq.ans}
+                        </p>
                     </section>
                 )
             })}
