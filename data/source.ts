@@ -1,10 +1,4 @@
-interface IFAQS {
-    id: number
-    quest: string
-    ans: string
-}
-
-const faqs: IFAQS[] = [
+const faqs: IFAQ[] = [
     {
         id: 1,
         quest: "Do I have to allow the use of cookes?",
