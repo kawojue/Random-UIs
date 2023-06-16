@@ -2,8 +2,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import './styles.css'
-import { useState, useEffect } from 'react'
 import faqs from '@/data/source'
+import { useState, useEffect } from 'react'
+import { GiPlainCircle } from 'react-icons/gi'
 
 const page = () => {
     const [isActive, setIsActive] = useState<number>(1)
@@ -15,11 +16,11 @@ const page = () => {
     }, [])
 
     return (
-        <main className="mx-auto mt-14 md:mt-16">
+        <main className="w-full mt-14 md:mt-16">
             <h1 className="text-xl md:text-2xl text-center">
                 FAQ
             </h1>
-            <section>
+            <section className="flex flex-col gap-3 mx-auto rounded-lg mt-5 w-[95vw] max-w-[600px] bg-white px-5 py-3 justify-center">
                 {faqs.map((faq: IFAQ) => {
                     const active:boolean = isOpen && isActive === faq.id
 
@@ -28,12 +29,18 @@ const page = () => {
                             setIsActive(faq.id)
                             setIsOpen(true)
                         }}>
-                            <h3 className={`${active && 'text-clr-2'}`}>
-                                {faq.quest}
-                            </h3>
-                            <p className={`${!active && 'hidden'}`}>
-                                {faq.ans}
-                            </p>
+                            <div className={`${active && 'text-clr-2'} flex gap-5`}>
+                                <GiPlainCircle />
+                                <p>
+                                    {faq.quest}
+                                </p>
+                            </div>
+                            <div className={`${!active && 'hidden'} flex gap-5`}>
+                                <div className="border-[0.125rem] border-dashed"></div>
+                                <p>
+                                    {faq.ans}
+                                </p>
+                            </div>
                         </article>
                     )
                 })}
