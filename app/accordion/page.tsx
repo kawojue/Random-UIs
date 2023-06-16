@@ -16,24 +16,28 @@ const page = () => {
 
     return (
         <main className="mx-auto mt-14 md:mt-16">
-            <h1 className="text-xl md:text-2xl text-center">FAQ</h1>
-            {faqs.map((faq: IFAQ) => {
-                const active:boolean = isOpen && isActive === faq.id
+            <h1 className="text-xl md:text-2xl text-center">
+                FAQ
+            </h1>
+            <section>
+                {faqs.map((faq: IFAQ) => {
+                    const active:boolean = isOpen && isActive === faq.id
 
-                return (
-                    <section key={faq.id} onClick={() => {
-                        setIsActive(faq.id)
-                        setIsOpen(true)
-                    }}>
-                        <h3 className={`${active && 'text-clr-2'}`}>
-                            {faq.quest}
-                        </h3>
-                        <p className={`${!active && 'hidden'}`}>
-                            {faq.ans}
-                        </p>
-                    </section>
-                )
-            })}
+                    return (
+                        <article key={faq.id} onClick={() => {
+                            setIsActive(faq.id)
+                            setIsOpen(true)
+                        }}>
+                            <h3 className={`${active && 'text-clr-2'}`}>
+                                {faq.quest}
+                            </h3>
+                            <p className={`${!active && 'hidden'}`}>
+                                {faq.ans}
+                            </p>
+                        </article>
+                    )
+                })}
+            </section>
         </main>
     )
 }
