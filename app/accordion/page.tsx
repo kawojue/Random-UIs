@@ -20,7 +20,7 @@ const page = () => {
             <h1 className="text-xl md:text-2xl text-center">
                 FAQ
             </h1>
-            <section className="flex flex-col gap-3 mx-auto rounded-lg mt-5 w-[95vw] max-w-[600px] bg-white px-5 py-3 justify-center">
+            <section className="flex flex-col gap-5 mx-auto rounded-lg mt-5 w-[95vw] max-w-[600px] bg-white px-5 py-3 justify-center">
                 {faqs.map((faq: IFAQ) => {
                     const active:boolean = isOpen && isActive === faq.id
 
@@ -28,14 +28,14 @@ const page = () => {
                         <article key={faq.id} onClick={() => {
                             setIsActive(faq.id)
                             setIsOpen(true)
-                        }}>
-                            <div className={`${active && 'text-clr-2'} flex gap-5`}>
+                        }} className="flex flex-col gap-3 justify-center">
+                            <div className={`${active && 'text-clr-2'} flex gap-5 items-center`}>
                                 <GiPlainCircle />
                                 <p>
                                     {faq.quest}
                                 </p>
                             </div>
-                            <div className={`${!active && 'hidden'} flex gap-5`}>
+                            <div className={`${!active && 'hidden'} flex gap-5 ml-1.5`}>
                                 <div className="border-[0.125rem] border-dashed"></div>
                                 <p>
                                     {faq.ans}
